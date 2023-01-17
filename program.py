@@ -20,12 +20,13 @@ class Program:
 
 
 program = Program()
-program.add_block(AssignBlock("a", ParseBlock(int, '1')))
-program.add_block(AssignBlock("b", 2))
-program.add_block(AssignBlock("c", 3))
-program.add_block(AssignBlock("d", SumBlock(Reference("a"), Reference("b"))))
+program.add_block(AssignBlock("a", ParseBlock(int, '1')))  # a = int('1')
+program.add_block(AssignBlock("b", 2))  # b = 2
+program.add_block(AssignBlock("c", 3))  # c = 3
+program.add_block(AssignBlock("d", SumBlock(
+    Reference("a"), Reference("b"))))  # d = a + b
 program.add_block(PrintBlock(
-    SumBlock(Reference("a"), SumBlock(Reference("b"), Reference("c")))))
-program.add_block(PrintBlock(Reference("d")))
-program.add_block(PrintBlock(InputBlock("Enter name: ")))
+    SumBlock(Reference("a"), SumBlock(Reference("b"), Reference("c")))))  # print(a + b + c)
+program.add_block(PrintBlock(Reference("d")))  # print(d)
+program.add_block(PrintBlock(InputBlock("Enter name: ")))  # print(input("Enter name: "))
 program.run()
