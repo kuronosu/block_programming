@@ -1,8 +1,5 @@
-from typing import Any, Optional
-
 from blocks.arithmetic import SumBlock
-from blocks.base import BaseBlock, Context, Reference, Response
-from blocks.operation import OperationBLock
+from blocks.base import BaseBlock, Context, Reference
 from blocks.assignment import AssignBlock
 from blocks.utility import InputBlock, ParseBlock, PrintBlock
 
@@ -28,5 +25,6 @@ program.add_block(AssignBlock("d", SumBlock(
 program.add_block(PrintBlock(
     SumBlock(Reference("a"), SumBlock(Reference("b"), Reference("c")))))  # print(a + b + c)
 program.add_block(PrintBlock(Reference("d")))  # print(d)
-program.add_block(PrintBlock(InputBlock("Enter name: ")))  # print(input("Enter name: "))
+program.add_block(PrintBlock(InputBlock("Enter name: "))
+                  )  # print(input("Enter name: "))
 program.run()
